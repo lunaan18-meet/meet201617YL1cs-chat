@@ -16,6 +16,8 @@ class Client:
     _DEFAULT_HOST='localhost' #Default host (for communicating between sessions on one machine)
 
     def __init__(self,username='Me',partner_name='Partner',hostname=None,port=None):
+        self.username=username
+        self.partner_name=partner_name
         '''
         Initialize a new client object.
 
