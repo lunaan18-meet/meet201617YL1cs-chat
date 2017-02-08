@@ -54,11 +54,11 @@ class TextBox(TextInput):
         self.writer.goto(self.pos)
 
 
-        def write_msg(self):
-            self.writer.penup()
-            self.writer.goto(-200,100)
-            self.writer.pendown()
-            self.write_msg(self.get_msg())
+    def write_msg(self):
+        self.writer.penup()
+        self.writer.goto(-200,100)
+        self.writer.pendown()
+        self.write_msg(self.get_msg())
 
 '''    
 try1=TextBox()
@@ -87,7 +87,43 @@ try3=write_msg()
 #      you send messages and update message displays.
 #####################################################################################
 #####################################################################################
+class Sendbutton(Button):
+    def _init_(self,my_turtle=None,shape=None,pos=(0,-250),view=None):
+        if view ==None:
+           my_view = View("me","partner")
+           self.view = my_view
+        else:
+            self.view = view
+        if my_turtle is None:
+            self.turtle=turtle.clone()
+        else:
+            self.turtle=my_turtle
 
+        self.turtle.speed(0)
+        self.turtle.hideturtle()
+        self.turtle.penup()
+        self.turtle.goto(pos)
+
+
+        if shape is None:
+            self.turtle.shape('square')
+            self.turtle.shapesize(2,10)
+        else:
+            turtle.addshape(shape)
+            self.turtle.shape(shape)
+        self.turtle.showturtle()
+        self.turtle.onclick(self.fun)
+        turtle.listen()
+        self.view =view
+
+   def fun(self, x=0,y=0):
+       self.view.send_msg()
+       
+
+        
+        
+        
+            
 
 ##################################################################
 #                             View                               #
@@ -105,18 +141,27 @@ class View:
     _LINE_SPACING=round(_SCREEN_HEIGHT/2/(_MSG_LOG_LENGTH+1))
 
     def __init__(self,username='Me',partner_name='Partner'):
+        self.username=username
+        self.partner_name=partner_name
+        self.textbox = TextBox()
+        self.textbox.draw_box()
+        my_client = Client()
+        self.my_client = my_client
         '''
         :param username: the name of this chat user
         :param partner_name: the name of the user you are chatting with
         '''
         ###
         #Store the username and partner_name into the instance.
+        self.partner_name=partner_name
+        self.username=username
         ###
 
         ###
         #Make a new client object and store it in this instance of View
         #(i.e. self).  The name of the instance should be my_client
         ###
+        turtle.setup(width=400, height=600, startx=None, starty=None)
 
         ###
         #Set screen dimensions using turtle.setup
