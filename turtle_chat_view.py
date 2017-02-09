@@ -116,7 +116,7 @@ class Sendbutton(Button):
         turtle.listen()
         self.view =view
 
-   def fun(self, x=0,y=0):
+   def fun(self,x = None,y = None):
        self.view.send_msg()
        
 
@@ -147,6 +147,7 @@ class View:
         self.textbox.draw_box()
         my_client = Client()
         self.my_client = my_client
+        self.button = SendButton(self)
         '''
         :param username: the name of this chat user
         :param partner_name: the name of the user you are chatting with
@@ -182,12 +183,22 @@ class View:
         #   self.msg_queue.append(a_msg_string)
         self.msg_queue=[]
         ###
-
+        
         ###
         #Create one turtle object for each message to display.
         #You can use the clear() and write() methods to erase
         #and write messages for each
         ###
+        self.msg_queue_turtles = list()
+        for i in range (3):
+            self.msg_queue.insert(i, " ")
+            self.msg_queue_turtles.append(turtle.clone())
+        for sivi in range (3):
+            self.msg_queue_turtles[sivi].hideturtle()
+            self.msg_queue_turtles[sivi].penup()
+            self.msg_queue_turtles[sivi].goto(-100,sivi*(_LINE_SPACING))
+            
+            
 
         ###
         #Create a TextBox instance and a SendButton instance and
@@ -209,6 +220,10 @@ class View:
         It should call self.display_msg() to cause the message
         display to be updated.
         '''
+        self.my_client.send(self.textbox.new_msg)
+        self.msg_queue.insert(0,self.textbox.new_msg)
+        self.display_msg()
+        self.textbox.clear_msg()
         pass
 
     def get_msg(self):
