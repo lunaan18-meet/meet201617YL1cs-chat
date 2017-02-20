@@ -58,7 +58,7 @@ class TextBox(TextInput):
 
     def write_msg(self):
         self.writer.penup()
-        self.writer.goto(-130,20)
+        self.writer.goto(-130,-20)
         self.writer.pendown()
         self.writer.write(self.new_msg)
 
@@ -143,8 +143,6 @@ class View:
     _LINE_SPACING=round(_SCREEN_HEIGHT/2/(_MSG_LOG_LENGTH+1))
 
     def __init__(self,username='Me',partner_name='Partner'):
-        self.username=username
-        self.partner_name=partner_name
         self.textbox = TextBox()
         self.textbox.draw_box()
         my_client = Client()
@@ -226,7 +224,7 @@ class View:
         self.msg_queue.insert(0,self.textbox.new_msg)
         self.display_msg()
         self.textbox.clear_msg()
-        pass
+        
 
     def get_msg(self):
         return self.textbox.get_msg()
@@ -274,7 +272,7 @@ class View:
             self.msg_queue_turtles[i].clear()
         for i in range(3):
             self.msg_queue_turtles[i].write(self.msg_queue[t])
-        pass
+        
     
 
     def get_client(self):
