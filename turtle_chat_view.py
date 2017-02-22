@@ -60,6 +60,7 @@ class TextBox(TextInput):
         self.writer.penup()
         self.writer.goto(-130,-20)
         self.writer.pendown()
+        self.writer.clear()
         self.writer.write(self.new_msg)
 
 '''    
@@ -89,33 +90,9 @@ try3=write_msg()
 #      you send messages and update message displays.
 #####################################################################################
 #####################################################################################
-class Sendbutton(Button):
-    def _init_(self,my_turtle=None,shape=None,pos=(0,-220),view=None):
-        if view ==None:
-           my_view = View("me","partner")
-           self.view = my_view
-        else:
-            self.view = view
-        if my_turtle is None:
-            self.turtle=turtle.clone()
-        else:
-            self.turtle=my_turtle
-
-        self.turtle.speed(0)
-        self.turtle.hideturtle()
-        self.turtle.penup()
-        self.turtle.goto(pos)
-
-
-        if shape is None:
-            self.turtle.shape('square')
-            self.turtle.shapesize(2,10)
-        else:
-            turtle.addshape(shape)
-            self.turtle.shape(shape)
-        self.turtle.showturtle()
-        self.turtle.onclick(self.fun)
-        turtle.listen()
+class SendButton(Button):
+    def _init_(self,view):
+        super(SendButton,self)._init_()
         self.view =view
 
     def fun(self,x = None,y = None):
@@ -287,7 +264,8 @@ class View:
 #view in different ways.                                #
 #########################################################
 if __name__ == '__main__':
-    my_view=View()
+
+    view=View()
     _WAIT_TIME=200 #Time between check for new message, ms
     def check() :
         #msg_in=my_view.my_client.receive()
