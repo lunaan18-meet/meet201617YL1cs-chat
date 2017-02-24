@@ -215,7 +215,7 @@ class View:
         display to be updated.
         '''
         self.my_client.send(self.textbox.new_msg)
-        self.msg_queue.append(0,self.textbox.new_msg)
+        self.msg_queue.insert(0,self.textbox.new_msg)
         self.display_msg()
         self.textbox.clear_msg()
 
