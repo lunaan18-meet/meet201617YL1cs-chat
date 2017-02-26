@@ -57,11 +57,11 @@ class TextBox(TextInput):
 
 
     def write_msg(self):
-        self.writer.penup()
-        self.writer.goto(-130,-20)
         self.writer.pendown()
+        self.writer.goto(-130,-50)
+##      self.writer.pendown()
         self.writer.clear()
-        self.writer.write(self.new_msg)
+        self.writer.write(self.new_msg, font = ('Arial',16,))
 
 
 
@@ -122,9 +122,13 @@ class View:
         self.partner_name=partner_name
         #self.my_client=Client()
        
-        
-         
         '''
+        partner = turtle.clone()
+        turtle.penup()
+        partner.goto(-50,200)
+        partner.pendown()
+        partner.write(self.partner_name,align= "left", font=("Arial", 24)
+        
         :param username: the name of this chat user
         :param partner_name: the name of the user you are chatting with
         '''
@@ -180,13 +184,13 @@ class View:
         #and write messages for each
         ###
         self.msg_queue_turtles = list()
-        for i in range (5):
+        for i in range (10):
             self.msg_queue.insert(i, " ")
             self.msg_queue_turtles.append(turtle.clone())
-        for me in range (5):
+        for me in range (10):
             self.msg_queue_turtles[me].hideturtle()
             self.msg_queue_turtles[me].penup()
-            self.msg_queue_turtles[me].goto(-100,me*10)
+            self.msg_queue_turtles[me].goto(-140,me*10)
             
             
 
@@ -265,10 +269,10 @@ class View:
         This method should update the messages displayed in the screen.
         You can get the messages you want from self.msg_queue
         '''
-        for i in range(5):
+        for i in range(10):
             self.msg_queue_turtles[i].clear()
-        for me in range(5):
-            self.msg_queue_turtles[me].write(self.msg_queue[me])
+        for me in range(10):
+            self.msg_queue_turtles[me].write(self.msg_queue[me], font= ('Arial',16))
         
     
 
