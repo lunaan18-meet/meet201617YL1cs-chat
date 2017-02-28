@@ -11,6 +11,8 @@ import turtle
 from turtle_chat_client import Client
 from turtle_chat_widgets import Button
 from turtle_chat_widgets import TextInput
+#hii1 = turtle.screen()
+#hii1.bgpic('gtrr.png'
 #####################################################################################
 #####################################################################################
 
@@ -59,6 +61,10 @@ class TextBox(TextInput):
     def write_msg(self):
         self.writer.pendown()
         self.writer.goto(-130,-50)
+        #ask
+        if self.writer==(-170,-50):
+            self.writer.goto(-130,-60)
+        
 ##      self.writer.pendown()
         self.writer.clear()
         self.writer.write(self.new_msg, font = ('Arial',16,))
@@ -128,10 +134,11 @@ class View:
         partner.goto(-50,200)
         partner.pendown()
         partner.write(self.partner_name,align= "left", font=("Arial", 24)
-        
-        :param username: the name of this chat user
-        :param partner_name: the name of the user you are chatting with
         '''
+        
+##        :param username: the name of this chat user
+##        :param partner_name: the name of the user you are chatting with
+##        
         ###
         #Store the username and partner_name into the instance.
        
