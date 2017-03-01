@@ -11,9 +11,9 @@ import turtle
 from turtle_chat_client import Client
 from turtle_chat_widgets import Button
 from turtle_chat_widgets import TextInput
-#hii1 = turtle.screen()
-#hii1.bgpic('gtrr.png'
-#####################################################################################
+wow = turtle.Screen()
+wow.bgpic('wow.gif')
+#####################################################################################5
 #####################################################################################
 
 
@@ -48,22 +48,20 @@ class TextBox(TextInput):
         self.height =5
         self.width =150
         turtle.hideturtle()
-        self.writer=turtle.clone()
-        self.writer.penup()
-        self.writer.goto(self.pos)
-        self.writer.pendown()
-        self.writer.goto(self.width,-200)
-        self.writer.goto(self.width, self.height)
-        self.writer.goto(-145,self.height)
-        self.writer.goto(self.pos)
+        self.type=turtle.clone()
+        self.type.penup()
+        self.type.goto(self.pos)
+        self.type.pendown()
+        self.type.goto(self.width,-200)
+        self.type.goto(self.width, self.height)
+        self.type.goto(-145,self.height)
+        self.type.goto(self.pos)
+        
 
 
     def write_msg(self):
-        self.writer.pendown()
+        self.writer.penup()
         self.writer.goto(-130,-50)
-        #ask
-        if self.writer==(-170,-50):
-            self.writer.goto(-130,-60)
         
 ##      self.writer.pendown()
         self.writer.clear()
@@ -197,7 +195,7 @@ class View:
         for me in range (10):
             self.msg_queue_turtles[me].hideturtle()
             self.msg_queue_turtles[me].penup()
-            self.msg_queue_turtles[me].goto(-140,me*10)
+            self.msg_queue_turtles[me].goto(-140,me*20)
             
             
 
