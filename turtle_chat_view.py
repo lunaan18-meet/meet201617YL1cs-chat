@@ -61,6 +61,7 @@ class TextBox(TextInput):
 
     def write_msg(self):
         self.writer.penup()
+
         self.writer.goto(-130,-50)
         
 ##      self.writer.pendown()
@@ -68,6 +69,7 @@ class TextBox(TextInput):
         self.writer.write(self.new_msg, font = ('Arial',16,))
 
 
+ 
 
         
 #####################################################################################
@@ -91,6 +93,7 @@ class TextBox(TextInput):
 #####################################################################################
 #####################################################################################
 class SendButton(Button):
+
     def __init__(self,view,my_turtle=None,shape=None,pos=(0,-500)):
         super(SendButton,self).__init__()
         self.view=view
@@ -102,7 +105,14 @@ class SendButton(Button):
         self.cool.pencolor('white')
         self.cool.write("SEND" , font=('Arial',20))
         
-    def fun(self,x=0,y=0):
+    #def fun(self,x=0,y=0):
+
+    #def _init_(self,view):
+    # super(SendButton,self)._init_()
+    # self.view =view
+
+    def fun(self,x = None,y = None):
+
         self.view.send_msg()
        
 
@@ -298,6 +308,7 @@ class View:
 #view in different ways.                                #
 #########################################################
 if __name__ == '__main__':
+
     my_view=View()
     _WAIT_TIME=200 #Time between check for new message, ms
     def check() :
