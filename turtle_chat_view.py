@@ -91,12 +91,17 @@ class TextBox(TextInput):
 #####################################################################################
 #####################################################################################
 class SendButton(Button):
-    def __init__(self,view,my_turtle=None,shape=None,pos=(0,-220)):
+    def __init__(self,view,my_turtle=None,shape=None,pos=(0,-500)):
         super(SendButton,self).__init__()
         self.view=view
-       
-      
-
+        cool=turtle.clone()
+        self.cool=cool
+        self.cool.penup()
+        self.cool.goto(-40,-16)
+        self.cool.pendown()
+        self.cool.pencolor('white')
+        self.cool.write("SEND" , font=('Arial',20))
+        
     def fun(self,x=0,y=0):
         self.view.send_msg()
        
@@ -128,7 +133,7 @@ class View:
        
         '''
         partner = turtle.clone()
-        turtle.penup()
+        partner.penup()
         partner.goto(-50,200)
         partner.pendown()
         partner.write(self.partner_name,align= "left", font=("Arial", 24)
@@ -195,7 +200,7 @@ class View:
         for me in range (10):
             self.msg_queue_turtles[me].hideturtle()
             self.msg_queue_turtles[me].penup()
-            self.msg_queue_turtles[me].goto(-140,me*20)
+            self.msg_queue_turtles[me].goto(-140,me*20+20)
             
             
 
